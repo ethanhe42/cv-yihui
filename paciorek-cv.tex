@@ -1,0 +1,250 @@
+ \documentclass[margin,line]{res}
+\usepackage[defernumbers=true,maxnames=10,sorting=none]{biblatex}
+\usepackage{url}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{colorlinks,breaklinks,
+            urlcolor=[rgb]{0.09765625,0.09765625,0.4375}
+            ,citecolor=[rgb]{0,0,0}}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}            
+% 0,0,0.5 navy blue
+% 0.6875,0.765625,0.8671875 steel blue
+% [hyphens,spaces,obeyspaces]
+% [style=plain]
+\addbibresource{publish.bib} % with extension
+\addbibresource{underreview.bib} % with extension
+\addbibresource{report.bib} % with extension
+
+\oddsidemargin -.5in
+\evensidemargin -.5in
+\textwidth=6.0in
+\itemsep=0in
+\parsep=0in
+% if using pdflatex:
+%\setlength{\pdfpagewidth}{\paperwidth}
+%\setlength{\pdfpageheight}{\paperheight} 
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+\def\makenamesetup{%
+  \def\bibnamedelima{~}%
+  \def\bibnamedelimb{ }%
+  \def\bibnamedelimc{ }%
+  \def\bibnamedelimd{ }%
+  \def\bibnamedelimi{ }%
+  \def\bibinitperiod{.}%
+  \def\bibinitdelim{~}%
+  \def\bibinithyphendelim{.-}}    
+\newcommand*{\makename}[2]{\begingroup\makenamesetup\xdef#1{#2}\endgroup}
+
+\newcommand*{\boldname}[4]{%
+  \def\lastname{#1}%
+  \def\firstname{#2}%
+  \def\firstinit{#3}%
+  \def\secondname{#4}}
+\boldname{}{}{}{}
+
+
+% Patch new definitions
+\renewcommand{\mkbibnamegiven}[1]{%
+  \ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and ( test {\ifdefequal{\lastname}{\namepartfamily}} or test {\ifdefequal{\secondname}{\namepartfamily}} ) }
+  {\mkbibbold{#1}}{#1}%
+}
+
+\renewcommand{\mkbibnamefamily}[1]{%
+  \ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and ( test {\ifdefequal{\lastname}{\namepartfamily}} or test {\ifdefequal{\secondname}{\namepartfamily}} ) }
+  {\mkbibbold{#1}}{#1}%
+}
+
+\boldname{He}{Yihui}{}{He*}
+
+\begin{document}
+\nocite{*}
+
+\name{Yihui He \vspace*{.1in}}
+
+\begin{resume}
+\section{\sc Contact Information}
+\vspace{.05in}
+\begin{tabular}{@{}p{2in}p{4in}}        
+% Computer Science   & {\it Phone:}  (412) 566-3651 \\         
+Carnegie Mellon University & {\it E-mail:}  
+\href{mailto:yihuihe.yh@gmail.com}{yihuihe.yh@gmail.com}\\       
+Pittsburgh, PA 15213  & {\it Website:} 
+\href{http://yihui-he.github.io/}{yihui-he.github.io} \\     
+\end{tabular}
+
+
+\section{\sc Research Interests}
+% CNN Acceleration and Compression~\cite{He_2017_ICCV,adc}, 
+CNN Acceleration and Compression~\cite{He_2017_ICCV,adc,tpami}, 
+Reinforcement Learning~\cite{adc}, 
+Super Resolution~\cite{liang2017single}, 
+Detection~\cite{He_2017_ICCV}, 
+Depth~\cite{he2017estimated}, 
+Structure from Motion, Panorama, 
+Security Game~\cite{ma2017vehicle}, 
+HTTP~\cite{pid}
+%, DNS probing
+%, TSP \cite{he2017empirical}
+\section{\sc Education}
+{\bf Carnegie Mellon University} \hfill {2018 - 2019}\\
+%{\em Department of Mathematics and Statistics} 
+\vspace*{-.1in}
+\begin{list1}
+\item[] Master, Computer Vision
+\end{list1}
+
+{\bf University of California, Santa Babara} \hfill {Spring 2016}\\
+%{\em Department of Statistics} 
+\vspace*{-.1in}
+\begin{list1}
+\item[] Exchange student, Computer Science, GPA 4.0/4.0
+\end{list1}
+
+{\bf Xi'an Jiaotong University} \hfill {2014 - 2018}\\
+%{\em Department of Mathematics and Statistics} 
+\vspace*{-.1in}
+\begin{list1}
+\item[] Bachelor, Computer Science, GPA 81.4/100 (1st/2nd/3rd year rank: 22\%/4\%/37\%)
+\end{list1}
+
+
+
+\section{\sc Publications}
+\printbibliography[heading=none, type=inproceedings]
+
+\section{\sc Under review}
+\printbibliography[heading=none, type=article]
+
+\section{\sc Project Report}
+\printbibliography[heading=none, type=misc]
+
+
+\section{\sc Service}
+{\bf Reviewer} for IEEE Transactions on Image Processing (\textbf{TIP}, AE: Prof.~\href{http://www.sfu.ca/~jiel/}{Jie Liang}).
+
+
+\section{\sc Research \\Experience}
+{\bf MIT} \hfill {Oct, 2017 - Dec, 2017}\\%\hfill {Baltimore, MD}\\
+
+\vspace{-.3in}
+{\em Research Assistant with Prof.~\href{https://stanford.edu/~songhan/}{Song Han}}
+\begin{list2}
+\item Automated CNN compression~\cite{adc}. Successfully compressed NASNet, MobileNet.
+\end{list2}
+
+{\bf Johns Hopkins University} \hfill {Aug, 2017 - Nov, 2017}\\%\hfill {Baltimore, MD}\\
+
+\vspace{-.3in}
+{\em Research Assistant with Prof.~\href{http://www.cs.jhu.edu/~ayuille/}{Alan Yuille}}
+\begin{list2}
+\item Visual concepts for fewshot detection. Detectors emerged from visual concepts.
+\end{list2}
+
+{\bf Megvii Inc. (Face++)} \hfill {Dec, 2016 - Aug, 2017}\\%\hfill {Beijing}\\
+
+\vspace{-.3in}
+{\em Research Intern with Dr.~\href{https://scholar.google.com/citations?user=yuB-cfoAAAAJ&hl=en&oi=ao}{Xiangyu Zhang} and Dr.~\href{http://www.jiansun.org/}{Jian Sun}} %\hfill Sept, 2016 - Aug, 2017
+\begin{list2}
+\item Pruning CNN channels~\cite{He_2017_ICCV}. VGG-16 $5\times$ with negligible accuracy loss.
+\item Head boxes aided pedestrian detection. Distinguish overlapped pedestrians by detecting heads.
+\item Object detection with confidence scores on each edge of bounding box.
+\end{list2}
+
+{\bf Xi'an Jiaotong University} %\hfill {Xi'an}
+\vspace{-.3cm}
+
+%\vspace{-.1cm}
+{\em Undergrad Researcher} in Computer Vision and AI Lab %\hfill {\bf 2017}
+\begin{list2}
+\item Super resolution~\cite{liang2017single}, supervised by \href{https://scholar.google.com/citations?user=Dk7JgNcAAAAJ&hl=en}{Jinjun Wang}.
+\end{list2}
+
+%\vspace{-.1cm}
+{\em Undergrad Researcher} in Intelligent Network and Network Security Lab%{\bf 2014 - 2015}
+\begin{list2}
+\item Traffic driven camera placement~\cite{ma2017vehicle}, supervised by \href{http://www4.comp.polyu.edu.hk/~csxluo/}{Xiaopu Luo}.
+\item PID-based streaming over http~\cite{pid}.
+\end{list2}
+
+{\em Baidu Big Data Lab Joint Cultivation student} %\hfill {2016-2018}\\ 
+\begin{list2}
+\item Data mining on large scale location data.
+\end{list2}
+
+\section{\sc Industry \\Experience}
+{\bf Deepglint Inc.} \hfill {June 2016 - Aug 2016}\\%\hfill {Beijing}\\
+
+\vspace{-.3in}
+{\em Engineering Intern} %\hfill {summer 2016}\\
+\begin{list2}
+\item Gastrointestinal stromal tumor Image Segmentation.
+\end{list2}
+
+% {\bf DJI Innovations Science and Technology Co., Ltd} \hfill {June 2015 - Aug 2015}\\%\hfill {Shenzhen}\\
+
+% \vspace{-.3in}
+% {\em Engineering Intern} %\\ %\hfill {summer 2015}\\
+% \begin{list2}
+% \item Build prototype robots and program embedded system.
+% \end{list2}
+
+\section{\sc Honors and Awards} 
+Baidu Big Data and AI scholarship \hfill 2018\\
+Siyuan scholarship, Xi'an Jiaotong University \hfill 2016-2017\\
+Outstanding student, Xi'an Jiaotong University \hfill 2016 \\
+RoboCup Junior Soccer Challenge, 1st place \hfill 2014\\
+RoboCup Junior Soccer Challenge, 3rd place \hfill 2012\\
+%\vspace*{-2.5mm}
+
+
+%\begin{list2}
+%\item 
+%\item Microsoft Beauty of Programming competition 2015, ranked 200/8000
+%\end{list2}
+
+% \section{\sc Projects}
+% Deep Learning \hfill 
+% \href{https://github.com/yihui-he/channel-pruning}{pruning},
+% \href{https://github.com/yihui-he/u-net}{U-Net}, 
+% \href{https://github.com/yihui-he/Estimated-Depth-Map-Helps-Image-Classification}{Depth}, 
+% \href{https://github.com/yihui-he/GAN-MNIST}{GAN}, 
+% \href{https://github.com/yihui-he/resnet-cifar10-caffe}{ResNet} 
+% (515 stars on Github)\\
+% GPU (CUDA) and C \hfill 
+% \href{https://github.com/yihui-he/Xception-caffe}{depthwise-conv}, 
+% \href{https://github.com/yihui-he/Modern-Compiler-Implementation-in-C}{c compiler} 
+% (44 stars on Github)\\
+% Multi-view Geometry \hfill
+% \href{https://github.com/yihui-he/panorama}{panorama},
+% \href{https://github.com/yihui-he/3D-reconstruction}{SfM},
+% \href{https://github.com/yihui-he/computer-vision-tutorial}{notes}
+% (71 stars on Github)\\
+% NLP \hfill 
+% \href{https://github.com/yihui-he/named-entity-recognition}{NER}, 
+% \href{https://github.com/yihui-he/recursive-neural-network}{RNN},
+% \href{https://github.com/yihui-he/Natural-Language-Process}{notes} 
+% (36 stars on Github)
+
+% \section{\sc Extracurricular} 
+% Writer in Zhihu with 3k followers \\
+% Go Amateur 2 dan \\
+%StarCraft II ranked Diamond
+
+\end{resume}
+\end{document}
+
+
+
+
